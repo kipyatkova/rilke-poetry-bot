@@ -78,9 +78,15 @@ class Scraper(object):
         copyright_found = full_page_text.rfind('© Copyright')
         poem_text = full_page_text[rilke_found:copyright_found]
         self.poem_text = poem_text
+        
+        # Write everything in a text file
+        w_file = open("poem_data.txt", "w")
+        w_file.write(self.poem_text)
+        w_file.close()
 
 
 if __name__ == '__main__':
+    print('scraper initiated')
     scraper = Scraper()
     scraper.set_dictionary()
     scraper.set_poem()
